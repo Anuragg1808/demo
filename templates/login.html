@@ -10,6 +10,8 @@
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{% static 'css/TEST_HOME.css' %}">
 
@@ -88,12 +90,12 @@
 
 <section class="form-container">
 
-   <form action="" method="post">
+   <form>
       <h3>welcome back!</h3>
-      <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="box">
-      <input type="password" name="pass" required maxlength="20" placeholder="enter your password" class="box">
+      <input type="text" name="email" required maxlength="50" id="username" placeholder="enter your username" class="box">
+      <input type="password" name="pass" required maxlength="20" id="pass" placeholder="enter your password" class="box">
       <p>don't have an account? <a href="register.html">register new</a></p>
-      <input type="submit" value="login now" name="submit" class="btn">
+      <input type="submit" value="login now" name="submit" onclick="check()" class="btn">
    </form>
 
 </section>
@@ -142,11 +144,34 @@
 
    </section>
 
-   <div class="credit">&copy; copyright @ 2022 by <span>URBAN_SAGE</span> | all rights reserved!</div>
+   <div class="credit">&copy; copyright @ 2024 by <span>URBAN_SAGE</span> | all rights reserved!</div>
 
 </footer>
 
-<!-- footer section ends -->
+
+<script>
+   function check()
+   {
+       var a =$('#username').val();
+       var pass = $('#pass').val();
+       $.ajax({
+           type: "POST",
+           url: "/Website/login_check",
+           data: {"username": a, "pass": pass},
+           success:function(data)
+           {
+               if(data["status"] == "pass")
+               {
+                   alert("login success!")
+               }
+               else
+               {
+                   alert("login fail!")
+               }
+           }
+       });
+   }
+</script>
 
 </body>
 </html>
