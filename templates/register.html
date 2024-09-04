@@ -9,6 +9,7 @@
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{% static 'css/TEST_HOME.css' %}">
@@ -88,32 +89,18 @@
 
 <section class="form-container">
 
-   <form action="" method="post">
+   <div class="form">
       <h3>create an account!</h3>
-      <input type="tel" name="name" required maxlength="50" placeholder="enter your name" class="box">
-      <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="box">
-      <input type="password" name="pass" required maxlength="20" placeholder="enter your password" class="box">
-      <input type="password" name="c_pass" required maxlength="20" placeholder="confirm your password" class="box">
+      <input type="tel" name="name" required maxlength="50" placeholder="enter your name" class="box" id="name">
+      <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="box" id="email">
+      <input type="password" name="pass" required maxlength="20" placeholder="enter your password" class="box" id="password">
+      <input type="password" name="c_pass" required maxlength="20" placeholder="confirm your password" class="box" id="cpass">
       <p>already have an account? <a href="login.html">login now</a></p>
-      <input type="submit" value="register now" name="submit" class="btn">
-   </form>
+      <input type="submit" value="register now" name="submit" onclick="check()" class="btn">
+   </div>
 
 </section>
 
-<!-- register section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- footer section starts  -->
 
 <footer class="footer">
 
@@ -148,7 +135,34 @@
 
 </footer>
 
-<!-- footer section ends -->
+<script>
+   function check()
+   {
+      var name = $('#name').val()
+      var email = $('#email').val();
+      var password = $('#password').val();
+      var cpass = $('#cpass').val();
+      
+      console.log("name: ", name);
+       console.log("email: ", email);
+       console.log("password: ", password);
+       console.log("cpass: ", cpass);
+
+      $.ajax({
+       type: "POST",
+       url: "/Website/register_check",
+       data: {"name": name,
+       "email": email,
+       "password": password,
+       "cpass": cpass},
+       success: function(data)
+       {
+           window.location.replace("/Website/register_view");
+       }
+       
+      });
+   }
+</script>
 
 
 </body>
