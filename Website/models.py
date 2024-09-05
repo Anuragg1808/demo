@@ -11,6 +11,11 @@ class registeraccount(models.Model):
     password = models.CharField(max_length=20)
     cpass = models.CharField(max_length=20)
 
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    number = models.CharField(max_length=10)  # Using CharField for phone number to accommodate different formats
+    message = models.TextField(max_length=1000)
 
 class User(models.Model):
     email = models.EmailField(max_length=50, unique=True)
