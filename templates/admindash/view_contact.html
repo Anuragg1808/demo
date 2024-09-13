@@ -1,0 +1,48 @@
+{% extends 'admindash/admin.html' %}
+{% load static %}
+{% block content %}
+
+<section id="users" class="tab-content" style="display: block;">
+    <h1>User Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>number</th>
+                <th>message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            '{% for obj in userdata %}'
+            <tr>
+                <td>{{ obj.name }} </td>
+                <td>{{ obj.email }}</td>
+                <td>{{ obj.number }}</td>
+                <td>{{ obj.message }}</td>
+                <td><button onclick="delete_record('{{obj.number}}');">Delete</button></td>
+            </tr>
+            '{% endfor %}'
+        </tbody>
+    </table>
+
+    <script>
+        function delete_record(name)
+        {
+            $.ajax({
+                type : "POST",
+                url: "/admindash/deleteuser",
+                data:{"name": name},
+                success: function(data)
+                {
+                    window.location.replace("/admindash/view_users");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
+
+{% endblock content %}

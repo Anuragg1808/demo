@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- Sidebar Section -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Admin Panel</h2>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="{% url 'admins' %}" class="tab-link" data-tab="dashboard"><i class="fas fa-th-large"></i> Dashboard</a></li>
+        <li><a href="#" class="tab-link" data-tab="properties"><i class="fas fa-home"></i> Properties</a></li>
+        <li><a href="{% url 'register_view' %}" class="tab-link" data-tab="users"><i class="fas fa-users"></i> Users</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i> Contact Messages</a></li>
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</div>
+<!-- Sidebar Section Ends -->
+
+<!-- Main Content Section -->
+<div class="main-content">
+    <header class="header">
+        <h1>Urban_Sage</h1>
+    </header>
+
+    {% block content %}
+
+    <section id="dashboard" class="tab-content">
+        <h1>Welcome to the Admin Dashboard</h1>
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>Total Properties</h3>
+                <p>150</p>
+            </div>
+            <div class="stat-box">
+                <h3>Total Users</h3>
+                <p>500</p>
+            </div>
+            <div class="stat-box">
+                <h3>Messages</h3>
+                <p>30</p>
+            </div>
+        </div>
+
+        {% endblock content %}
+        
+    </section>
+
+    
+</div>
+<!-- Main Content Section Ends -->
+
+<!-- Footer Section -->
+<footer class="admin-footer">
+    <p>&copy; 2024 by URBAN_SAGE | Admin Dashboard</p>
+</footer>
+<!-- Footer Section Ends -->
+
+</body>
+</html>

@@ -101,6 +101,7 @@ section{
 }
 
 .header .navbar.nav-2 .flex{
+   justify-content: center;
    padding-top: 0;
    padding-bottom: 0;
 }
@@ -110,6 +111,7 @@ section{
 }
 
 .header .navbar.nav-2{
+   justify-content: center;
    background-color: var(--white);
 }
 
@@ -193,18 +195,20 @@ section{
 }
 
 .home .center .form{
-   background-color: var(--white);
+   background-color: transparent;
    padding: 2rem;
-   box-shadow: var(--box-shodow);
-   width: 50rem;
+   width: 300rem;
+   color: white;
 }
 
 .home .center .form h3{
+   
    padding-bottom: 1rem;
    text-align: center;
    color: var(--black);
    text-transform: capitalize;
-   font-size: 2.5rem;
+   font-size: 3rem;
+   margin-top: 370px;
 }
 
 .home .center .form .flex{
